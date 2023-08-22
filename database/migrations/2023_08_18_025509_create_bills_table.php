@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('customers', function (Blueprint $table) {
+        Schema::create('bills', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('gender',10);
-            $table->string('email',50);
-            $table->string('address');
-            $table->string('phone_number');
+            $table->unsignedBigInteger('id_customer');
+            $table->foreign('id_customer')->references('id')->on('customers')->onUpdate('cascade')->onDelete('cascade');
+            $table->date('date_order');
+            $table->float('total');
+            $table->float('payment');
             $table->string('note');
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('customers');
+        Schema::dropIfExists('bills');
     }
 };
