@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('bills', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('id_customer');
-            $table->foreign('id_customer')->references('id')->on('customers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->date('date_order');
-            $table->float('total');
-            $table->float('payment');
-            $table->string('note');
+            $table->string('total',255);
+            $table->string('payment',255);
+            $table->string('note',255);
             $table->timestamps();
         });
     }

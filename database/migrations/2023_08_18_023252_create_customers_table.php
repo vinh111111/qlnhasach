@@ -15,10 +15,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('gender',10);
-            $table->string('email',50);
-            $table->string('address');
-            $table->string('phone_number');
-            $table->string('note');
+            $table->string('email',255);
+            $table->string('address',255);
+            $table->string('phone_number',255);
+            $table->string('note',255);
             $table->timestamps();
         });
     }
